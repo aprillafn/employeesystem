@@ -29,5 +29,4 @@ public class SalaryGridDto implements Serializable {
                 .collect(Collectors.toList());
     }
 
-
 }

@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface EmployeeRepository extends JpaRepository<Employee, String> {
+
     @Query(value = """
             SELECT emp.EmployeeID, emp.TitleID, emp.BirthDate, emp.FirstName, emp.LastName,
             emp.Gender, emp.HiredDate, sal.Salary

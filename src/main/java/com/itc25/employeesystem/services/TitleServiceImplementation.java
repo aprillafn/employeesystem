@@ -49,4 +49,5 @@ public class TitleServiceImplementation implements TitleService {
         titleRepository.deleteById(title.getId());
         return TitleGridDto.set(title);
     }
+
 }

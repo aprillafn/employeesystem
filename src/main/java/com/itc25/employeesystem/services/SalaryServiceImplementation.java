@@ -51,5 +51,4 @@ public class SalaryServiceImplementation implements SalaryService {
         salaryRepository.deleteById(salary.getId());
         return SalaryGridDto.set(salary);
     }
-
 }

@@ -14,4 +14,5 @@ public class DepartmentUpsertDto {
                 departmentName
         );
     }
+
 }

@@ -30,4 +30,5 @@ public class Salary {
         this.employees = id;
         this.salary = salary;
     }
+
 }

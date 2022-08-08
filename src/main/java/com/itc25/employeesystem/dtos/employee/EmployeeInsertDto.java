@@ -27,4 +27,5 @@ public class EmployeeInsertDto implements Serializable {
                 hiredDate
         );
     }
+
 }

@@ -12,6 +12,4 @@ public interface SalaryService {
     public SalaryGridDto updateSalary(String id, SalaryUpsertDto salaryUpdateDto);
     public SalaryGridDto deleteSalaryById(String id);
 
-
-
 }

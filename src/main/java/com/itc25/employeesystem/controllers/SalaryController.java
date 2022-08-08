@@ -54,4 +54,5 @@ public class SalaryController {
                         200),
                 HttpStatus.OK);
     }
+
 }

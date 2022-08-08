@@ -11,5 +11,4 @@ public interface DepartmentService {
     public DepartmentGridDto insertDepartment(DepartmentUpsertDto newDepartment);
     public DepartmentGridDto updateDepartment(String id, DepartmentUpsertDto updateDepartment);
     public DepartmentGridDto deleteDepartmentById(String id);
-
 }

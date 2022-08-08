@@ -21,4 +21,5 @@ public class DepartmentGridDto implements Serializable {
                 .map(DepartmentGridDto::set)
                 .collect(java.util.stream.Collectors.toList());
     }
+
 }

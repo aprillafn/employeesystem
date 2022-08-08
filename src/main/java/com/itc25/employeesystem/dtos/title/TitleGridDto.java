@@ -22,4 +22,5 @@ public class TitleGridDto implements Serializable {
                 .map(TitleGridDto::set)
                 .collect(Collectors.toList());
     }
+
 }

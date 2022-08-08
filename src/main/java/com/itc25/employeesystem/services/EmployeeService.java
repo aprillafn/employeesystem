@@ -10,17 +10,15 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    List<EmployeeGridDto> getEmployee();
+    public List<EmployeeGridDto> getEmployee();
 
-    EmployeeGridDto insertEmployee(EmployeeInsertDto newEmployee);
+    public EmployeeGridDto insertEmployee(EmployeeInsertDto newEmployee);
 
-    EmployeeGridDto updateEmployee(String id, EmployeeUpdateDto updateEmployee);
+    public EmployeeGridDto updateEmployee(String id, EmployeeUpdateDto updateEmployee);
 
-    EmployeeGridDto deleteEmployeeById(@PathVariable String id);
+    public EmployeeGridDto deleteEmployeeById(@PathVariable String id);
 
     public List<EmployeeSalaryGridDto> findAllSalaryByEmployee();
     public List<EmployeeGridDto> findAllEmployeeByYear(String year);
     public List<EmployeeGridDto> findAllEmployeeByGender(String gender);
-
-
 }

@@ -61,5 +61,4 @@ public class DepartmentManagerServiceImplementation implements DepartmentManager
         return DepartmentManagerGridDto.set(departmentManager);
     }
 
-
 }

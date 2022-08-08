@@ -12,5 +12,4 @@ public interface TitleService {
     public TitleGridDto insertTitle(TitleUpsertDto newTitle);
     public TitleGridDto updateTitle(String id, TitleUpsertDto updateTitle);
     public TitleGridDto deleteTitleById(String id);
-
 }
