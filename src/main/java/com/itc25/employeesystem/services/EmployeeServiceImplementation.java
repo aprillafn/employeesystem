@@ -28,13 +28,13 @@ public class EmployeeServiceImplementation implements EmployeeService {
 
     @Override
     public List<EmployeeGridDto> getEmployee() {
-        Stream<Employee> stream = employeeRepository.findAll().stream();
+        var stream = employeeRepository.findAll().stream();
         return EmployeeGridDto.toList(stream.collect(Collectors.toList()));
     }
 
     @Override
     public EmployeeGridDto insertEmployee(EmployeeInsertDto newEmployee) {
-        boolean employee = employeeRepository.findById(newEmployee.getId()).isPresent();
+        var employee = employeeRepository.findById(newEmployee.getId()).isPresent();
         if (employee) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee sudah ada");
         }
@@ -43,7 +43,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
 
     @Override
     public EmployeeGridDto updateEmployee(String id, EmployeeUpdateDto updateEmployee) {
-        Employee employee = employeeRepository.findById(id)
+        var employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Employee tidak ditemukan"));
         employee.setFirstName(updateEmployee.getFirstName());
         employee.setLastName(updateEmployee.getLastName());
@@ -54,7 +54,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
 
     @Override
     public EmployeeGridDto deleteEmployeeById(@PathVariable String id) {
-        Employee employee = employeeRepository.findById(id)
+        var employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Employee tidak ditemukan"));
         employeeRepository.deleteById(employee.getId());
         return EmployeeGridDto.set(employee);
@@ -67,7 +67,11 @@ public class EmployeeServiceImplementation implements EmployeeService {
 
     @Override
     public List<EmployeeGridDto> findAllEmployeeByYear(String year) {
-        return EmployeeGridDto.toList(employeeRepository.findAllEmployeeByYear(year));
+        var employee = employeeRepository.findAllEmployeeByYear(year);
+        if(employee.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee tidak ditemukan");
+        }
+        return EmployeeGridDto.toList(employee);
     }
 
     @Override

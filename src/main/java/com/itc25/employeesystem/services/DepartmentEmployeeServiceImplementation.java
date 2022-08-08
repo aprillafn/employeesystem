@@ -32,18 +32,18 @@ public class DepartmentEmployeeServiceImplementation implements DepartmentEmploy
 
     @Override
     public List<DepartmentEmployeeGridDto> findAllDepartmentEmployee() {
-        Stream<DepartmentEmployee> stream = departmentEmployeeRepository.findAll().stream();
+        var stream = departmentEmployeeRepository.findAll().stream();
         return DepartmentEmployeeGridDto.toList(stream.collect(Collectors.toList()));
     }
 
     @Override
     public DepartmentEmployeeGridDto insertDepartmentEmployee(DepartmentEmployeeUpsertDto newDepartmentEmployee) {
-        Employee employee = employeeRepository.findById(newDepartmentEmployee.getEmployeeId())
+        var employee = employeeRepository.findById(newDepartmentEmployee.getEmployeeId())
                 .orElseThrow(() -> new IllegalArgumentException("Employee tidak ditemukan"));
-        Department department = departmentRepository.findById(newDepartmentEmployee.getDepartmentId())
+        var department = departmentRepository.findById(newDepartmentEmployee.getDepartmentId())
                 .orElseThrow(() -> new IllegalArgumentException("Department tidak ditemukan"));
 
-        DepartmentEmployee departmentEmployee = new DepartmentEmployee(
+        var departmentEmployee = new DepartmentEmployee(
                 employee,
                 department);
 
@@ -52,7 +52,7 @@ public class DepartmentEmployeeServiceImplementation implements DepartmentEmploy
 
     @Override
     public DepartmentEmployeeGridDto deleteDepartmentEmployee(String id) {
-        DepartmentEmployee departmentEmployee = departmentEmployeeRepository.findById(id)
+        var departmentEmployee = departmentEmployeeRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tidak ditemukan"));
 
         departmentEmployeeRepository.delete(departmentEmployee);

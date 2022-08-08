@@ -20,13 +20,13 @@ public class TitleServiceImplementation implements TitleService {
 
     @Override
     public List<TitleGridDto> findAllTitle() {
-        Stream<Title> stream = titleRepository.findAll().stream();
+        var stream = titleRepository.findAll().stream();
         return TitleGridDto.toList(stream.collect(Collectors.toList()));
     }
 
     @Override
     public TitleGridDto insertTitle(TitleUpsertDto newTitle) {
-        boolean title = titleRepository.findById(newTitle.getId()).isPresent();
+        var title = titleRepository.findById(newTitle.getId()).isPresent();
         if (title) {
             throw new IllegalArgumentException("Title sudah ada");
         }
@@ -35,7 +35,7 @@ public class TitleServiceImplementation implements TitleService {
 
     @Override
     public TitleGridDto updateTitle(String id, TitleUpsertDto updateTitle) {
-        Title title = titleRepository.findById(id)
+        var title = titleRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Title tidak ditemukan"));
         title.setTitleName(updateTitle.getTitleName());
         titleRepository.save(title);
@@ -44,7 +44,7 @@ public class TitleServiceImplementation implements TitleService {
 
     @Override
     public TitleGridDto deleteTitleById(@PathVariable String id) {
-        Title title = titleRepository.findById(id)
+        var title = titleRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Title tidak ditemukan"));
         titleRepository.deleteById(title.getId());
         return TitleGridDto.set(title);

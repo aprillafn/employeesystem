@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 public class EmployeeGridDto implements Serializable {
     private final String id;
     private final String titleName;
-    private final LocalDate birthDate;
+    private final String birthDate;
     private final String fullName;
     private final String gender;
     private final LocalDate hiredDate;
@@ -23,7 +24,7 @@ public class EmployeeGridDto implements Serializable {
         return new EmployeeGridDto(
                 employee.getId(),
                 employee.getTitleID().getTitleName(),
-                employee.getBirthDate(),
+                employee.getBirthDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")),
                 employee.getFirstName().concat(" ").concat(employee.getLastName()),
                 employee.getGender(),
                 employee.getHiredDate());

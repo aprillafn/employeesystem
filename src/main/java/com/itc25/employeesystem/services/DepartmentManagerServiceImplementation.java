@@ -31,15 +31,15 @@ public class DepartmentManagerServiceImplementation implements DepartmentManager
 
     @Override
     public List<DepartmentManagerGridDto> findAllDepartmentManager(){
-        Stream<DepartmentManager> stream = departmentManagerRepository.findAll().stream();
+        var stream = departmentManagerRepository.findAll().stream();
         return DepartmentManagerGridDto.toList(stream.collect(Collectors.toList()));
     }
 
     @Override
     public DepartmentManagerGridDto insertDepartmentManager(DepartmentManagerUpsertDto newDepartmentManager){
-        Employee employee = employeeRepository.findById(newDepartmentManager.getEmployeeId())
+        var employee = employeeRepository.findById(newDepartmentManager.getEmployeeId())
                 .orElseThrow(() -> new IllegalArgumentException("Employee tidak ditemukan"));
-        Department department = departmentRepository.findById(newDepartmentManager.getDepartmentId())
+        var department = departmentRepository.findById(newDepartmentManager.getDepartmentId())
                 .orElseThrow(() -> new IllegalArgumentException("Department tidak ditemukan"));
 
         DepartmentManager departmentManager =
@@ -54,7 +54,7 @@ public class DepartmentManagerServiceImplementation implements DepartmentManager
 
     @Override
     public DepartmentManagerGridDto deleteDepartmentManager(String id) {
-        DepartmentManager departmentManager = departmentManagerRepository.findById(id)
+        var departmentManager = departmentManagerRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tidak ditemukan"));
 
         departmentManagerRepository.delete(departmentManager);

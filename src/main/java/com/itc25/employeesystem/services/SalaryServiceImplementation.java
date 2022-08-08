@@ -25,20 +25,20 @@ public class SalaryServiceImplementation implements SalaryService {
 
     @Override
     public List<SalaryGridDto> findAllSalary(){
-        Stream<Salary> stream = salaryRepository.findAll().stream();
+        var stream = salaryRepository.findAll().stream();
         return SalaryGridDto.toList(stream.collect(Collectors.toList()));
     }
 
     @Override
     public SalaryGridDto insertSalary(SalaryUpsertDto newSalary){
-        Employee employee = employeeRepository.findById(newSalary.getEmployeeId())
+        var employee = employeeRepository.findById(newSalary.getEmployeeId())
                 .orElseThrow(()-> new IllegalArgumentException("Employee tidak ditemukan"));
         return SalaryGridDto.set(salaryRepository.save(newSalary.convert(employee)));
     }
 
     @Override
     public SalaryGridDto updateSalary(String id, SalaryUpsertDto salaryUpdateDto){
-        Salary salary = salaryRepository.findById(id)
+        var salary = salaryRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Salary tidak ditemukan"));
         salary.setSalary(salaryUpdateDto.getSalary());
         salaryRepository.save(salary);
@@ -47,7 +47,7 @@ public class SalaryServiceImplementation implements SalaryService {
 
     @Override
     public SalaryGridDto deleteSalaryById(@PathVariable String id) {
-        Salary salary = salaryRepository.findById(id).orElseThrow(() -> new RuntimeException("Salary tidak ditemukan"));
+        var salary = salaryRepository.findById(id).orElseThrow(() -> new RuntimeException("Salary tidak ditemukan"));
         salaryRepository.deleteById(salary.getId());
         return SalaryGridDto.set(salary);
     }

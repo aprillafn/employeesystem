@@ -22,13 +22,13 @@ public class DepartmentServiceImplementation implements DepartmentService {
 
     @Override
     public List<DepartmentGridDto> findAllDepartment(){
-        Stream<Department> departmentStream = departmentRepository.findAll().stream();
+        var departmentStream = departmentRepository.findAll().stream();
         return DepartmentGridDto.toList(departmentStream.collect(Collectors.toList()));
     }
 
     @Override
     public DepartmentGridDto insertDepartment(DepartmentUpsertDto newDepartment){
-        boolean department = departmentRepository.findById(newDepartment.getId()).isPresent();
+        var department = departmentRepository.findById(newDepartment.getId()).isPresent();
         if (department) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department sudah ada");
         }
@@ -37,7 +37,7 @@ public class DepartmentServiceImplementation implements DepartmentService {
 
     @Override
     public DepartmentGridDto updateDepartment(String id, DepartmentUpsertDto updateDepartment){
-        Department department = departmentRepository.findById(id)
+        var department = departmentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Department tidak ditemukan"));
         department.setDepartmentName(updateDepartment.getDepartmentName());
         departmentRepository.save(department);
@@ -46,7 +46,7 @@ public class DepartmentServiceImplementation implements DepartmentService {
 
     @Override
     public DepartmentGridDto deleteDepartmentById(@PathVariable String id) {
-        Department department = departmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Department tidak ditemukan"));
+        var department = departmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Department tidak ditemukan"));
         departmentRepository.deleteById(department.getId());
         return DepartmentGridDto.set(department);
     }
