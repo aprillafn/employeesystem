@@ -33,4 +33,5 @@ public class EmployeeSalaryGridDto {
                 .map(EmployeeSalaryGridDto::set)
                 .collect(Collectors.toList());
     }
+
 }

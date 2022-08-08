@@ -9,4 +9,5 @@ import java.io.Serializable;
 public class DepartmentEmployeeUpsertDto implements Serializable {
     private final String employeeId;
     private final String departmentId;
+
 }

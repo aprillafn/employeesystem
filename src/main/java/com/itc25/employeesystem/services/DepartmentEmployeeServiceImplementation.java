@@ -63,4 +63,5 @@ public class DepartmentEmployeeServiceImplementation implements DepartmentEmploy
     public List<DepartmentEmployeeNameDto> findAllDepartmentEmployeeName(String departmentName) {
         return DepartmentEmployeeNameDto.toList(employeeRepository.findEmployeeByDepartmentId(departmentName));
     }
+
 }

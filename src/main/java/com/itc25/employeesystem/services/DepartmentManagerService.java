@@ -10,4 +10,5 @@ public interface DepartmentManagerService {
     public List<DepartmentManagerGridDto> findAllDepartmentManager();
     public DepartmentManagerGridDto insertDepartmentManager(DepartmentManagerUpsertDto newDepartmentManager);
     public DepartmentManagerGridDto deleteDepartmentManager(String id);
+
 }

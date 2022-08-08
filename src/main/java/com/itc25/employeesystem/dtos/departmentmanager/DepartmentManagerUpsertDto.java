@@ -8,4 +8,5 @@ import java.io.Serializable;
 public class DepartmentManagerUpsertDto implements Serializable {
     private final String departmentId;
     private final String employeeId;
+
 }

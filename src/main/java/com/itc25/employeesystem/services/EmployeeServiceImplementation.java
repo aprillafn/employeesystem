@@ -78,5 +78,4 @@ public class EmployeeServiceImplementation implements EmployeeService {
     public List<EmployeeGridDto> findAllEmployeeByGender(String gender){
         return EmployeeGridDto.toList(employeeRepository.findAllEmployeeByGender(gender));
     }
-
 }

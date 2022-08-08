@@ -24,7 +24,6 @@ public class DepartmentManager {
     @JoinColumn(name = "DepartmentID", nullable = false)
     private Department departmentID;
 
-
     public DepartmentManager(Employee employees, Department departmentID) {
         this.employees = employees;
         this.departmentID = departmentID;

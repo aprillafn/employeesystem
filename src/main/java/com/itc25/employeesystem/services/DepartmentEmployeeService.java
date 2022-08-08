@@ -11,6 +11,4 @@ public interface DepartmentEmployeeService {
     public DepartmentEmployeeGridDto insertDepartmentEmployee(DepartmentEmployeeUpsertDto newDepartmentEmployee);
     public DepartmentEmployeeGridDto deleteDepartmentEmployee(String id);
     public List<DepartmentEmployeeNameDto> findAllDepartmentEmployeeName(String departmentName);
-
-
 }
