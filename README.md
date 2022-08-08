@@ -1,7 +1,6 @@
 # Empoyee Database
 
 
-
 <!--- If we have only one group/collection, then no need for the "ungrouped" heading -->
 
 
@@ -10,7 +9,6 @@
 | Key | Value | Type |
 | --- | ------|-------------|
 | test_url | http://localhost:7000 | string |
-
 
 
 ## Endpoints

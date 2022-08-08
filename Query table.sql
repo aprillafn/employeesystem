@@ -1,5 +1,4 @@
 create database EmployeeDB
-
 create table Titles (
 	TitleID varchar(5) NOT NULL PRIMARY KEY,
 	TitleName varchar(50) NOT NULL
